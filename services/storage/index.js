@@ -1,8 +1,8 @@
-require('../../db/index');
 const express = require('express');
 const api = express();
 const router = require('./router');
 const jwt = require('express-jwt');
+const upload = require('express-fileupload');
 const config = require('../../config/index');
 
 api.use(express.json());
@@ -10,11 +10,6 @@ api.use(express.json());
 api.use(jwt({
   secret: config.get('auth').jwt_key,
   algorithms: ['HS256']
-}).unless({
-  path: [
-    config.get('path').register,
-    config.get('path').login
-  ]
 }));
 
 api.use((err, req, res, next) => {
@@ -26,11 +21,13 @@ api.use((err, req, res, next) => {
   }
 });
 
-api.use(config.get('path').auth, router);
+api.use(upload());
 
-api.listen(config.get('ports').auth, err => {
+api.use(config.get('path').storage, router);
+
+api.listen(config.get('ports').storage, err => {
   if (err) {
-    return console.log('Error happened while starting the auth service: ', err);
+    return console.log('Error happened while starting the storage service: ', err);
   }
-  console.log('Auth service succesfully started on port', config.get('ports').auth);
+  console.log('Storage service succesfully started on port', config.get('ports').storage);
 });

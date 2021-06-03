@@ -1,4 +1,4 @@
-require('../../db/index');
+require('../../db');
 const express = require('express');
 const api = express();
 const router = require('./router');
@@ -10,11 +10,6 @@ api.use(express.json());
 api.use(jwt({
   secret: config.get('auth').jwt_key,
   algorithms: ['HS256']
-}).unless({
-  path: [
-    config.get('path').register,
-    config.get('path').login
-  ]
 }));
 
 api.use((err, req, res, next) => {
@@ -26,11 +21,11 @@ api.use((err, req, res, next) => {
   }
 });
 
-api.use(config.get('path').auth, router);
+api.use(config.get('path').users, router);
 
-api.listen(config.get('ports').auth, err => {
+api.listen(config.get('ports').users, err => {
   if (err) {
-    return console.log('Error happened while starting the auth service: ', err);
+    return console.log('Error happened while starting the users service: ', err);
   }
-  console.log('Auth service succesfully started on port', config.get('ports').auth);
+  console.log('Users service successfully started on port', config.get('ports').users);
 });

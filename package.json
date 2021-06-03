@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-auth": "nodemon services/auth",
-    "start": "concurrently --kill-others \"npm run start-auth\""
+    "start-users": "nodemon services/users",
+    "start-recipes": "nodemon services/recipes",
+    "start-storage": "nodemon services/storage"
   },
   "author": "",
   "license": "ISC",

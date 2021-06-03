@@ -20,10 +20,6 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
     required: ['Password is a required field']
-  },
-  confirmation_password: {
-    type: String,
-    required: ['Confirmation password is a required field']
   }
 });
 

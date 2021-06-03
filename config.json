@@ -12,6 +12,15 @@
     "ports": {
         "auth": 9001,
         "storage": 9002,
-        "users": 9003
+        "users": 9003,
+        "recipes": 9004
+    },
+    "path":{
+        "auth": "/api/v1/auth",
+        "storage": "/api/v1/storage",
+        "users": "/api/v1/users" ,
+        "recipes": "/api/v1/recipes",
+        "register": "/api/v1/auth/register" ,
+        "login": "/api/v1/auth/login"
     }
 }
