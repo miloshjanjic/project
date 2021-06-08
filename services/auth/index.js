@@ -1,19 +1,19 @@
+require('dotenv').config();
 require('../../db/index');
 const express = require('express');
 const api = express();
 const router = require('./router');
 const jwt = require('express-jwt');
-const config = require('../../config/index');
 
 api.use(express.json());
 
 api.use(jwt({
-  secret: config.get('auth').jwt_key,
+  secret: process.env.JWT_KEY,
   algorithms: ['HS256']
 }).unless({
   path: [
-    config.get('path').register,
-    config.get('path').login
+    process.env.PATH_REGISTER,
+    process.env.PATH_LOGIN
   ]
 }));
 
@@ -26,11 +26,11 @@ api.use((err, req, res, next) => {
   }
 });
 
-api.use(config.get('path').auth, router);
+api.use(process.env.PATH_AUTH, router);
 
-api.listen(config.get('ports').auth, err => {
+api.listen(process.env.PORT_AUTH, err => {
   if (err) {
     return console.log('Error happened while starting the auth service: ', err);
   }
-  console.log('Auth service succesfully started on port', config.get('ports').auth);
+  console.log('Auth service succesfully started on port', process.env.PORT_AUTH);
 });

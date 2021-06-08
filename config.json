@@ -12,7 +12,8 @@
     "ports": {
         "auth": 9001,
         "storage": 9002,
-        "users": 9003,
+        "proxy": 9003,
+        "users": 9004,
         "recipes": 9004
     },
     "path":{

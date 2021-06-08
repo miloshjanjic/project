@@ -1,11 +1,12 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-const config = require('../config/index');
+// const config = require('../config/index');
 
-const host = config.get('database').host;
-const port = config.get('database').port;
-const username = config.get('database').username;
-const password = config.get('database').password;
-const dbname = config.get('database').dbname;
+const host = process.env.DATABASE_HOST;
+const port = process.env.DATABASE_PORT;
+const username = process.env.DATABASE_USERNAME;
+const password = process.env.DATABASE_PASSWORD;
+const dbname = process.env.DATABASE_DBNAME;
 
 let DSN = `mongodb+srv://${username}:${password}@${host}/${dbname}?retryWrites=true&w=majority`;
 
