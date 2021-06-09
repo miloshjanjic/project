@@ -24,7 +24,7 @@ module.exports = {
     });
   },
 
-  post: async (req, res) => {
+  postRecipe: async (req, res) => {
     const { recipeTitle, category, preparationTime, noPeople, shortDescription, recipe } = req.body;
 
     const postRecipe = new Recipe({
@@ -46,7 +46,7 @@ module.exports = {
     }
   },
 
-  update: async (req, res) => {
+  updateRecipe: async (req, res) => {
     const { id } = req.params;
     const { recipeTitle, category, preparationTime, noPeople, shortDescription, recipe } = req.body;
 
@@ -65,7 +65,7 @@ module.exports = {
     });
   },
 
-  delete: async (req, res) => {
+  deleteRecipe: async (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.Objectid.isValid(id))
@@ -78,7 +78,7 @@ module.exports = {
     });
   },
 
-  like_recipe: async (req, res) => {
+  likeRecipe: async (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.Objectid.isValid(id))

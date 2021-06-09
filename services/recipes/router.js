@@ -4,9 +4,9 @@ const controller = require('../../controllers/recipes');
 
 router.get('/', controller.fetchAll)
       .get('/:id', controller.fetchOne)
-      .post('/:id', controller.post)
-      .patch('/:id', controller.update)
-      .delete('/:id', controller.delete)
-      .patch('/:id', controller.like_recipe);
+      .post('/:id', controller.postRecipe)
+      .patch('/:id', controller.updateRecipe)
+      .delete('/:id', controller.deleteRecipe)
+      .patch('/:id', controller.likeRecipe);
 
 module.exports = router;

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // const config = require('../config/index');
 
 const host = process.env.DATABASE_HOST;
-const port = process.env.DATABASE_PORT;
+// const port = process.env.DATABASE_PORT;
 const username = process.env.DATABASE_USERNAME;
 const password = process.env.DATABASE_PASSWORD;
 const dbname = process.env.DATABASE_DBNAME;
