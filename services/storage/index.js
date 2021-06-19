@@ -1,15 +1,14 @@
-require('dotenv').config();
 const express = require('express');
 const api = express();
 const router = require('./router');
 const jwt = require('express-jwt');
 const upload = require('express-fileupload');
-// const config = require('../../config/index');
+const config = require('../../config/index');
 
 api.use(express.json());
 
 api.use(jwt({
-  secret: process.env.JWT_KEY,
+  secret: config.get('auth').jwt_key,
   algorithms: ['HS256']
 }));
 
@@ -24,11 +23,11 @@ api.use((err, req, res, next) => {
 
 api.use(upload());
 
-api.use(process.env.PATH_STORAGE, router);
+api.use(config.get('path').storage, router);
 
-api.listen(process.env.PORT_STORAGE, err => {
+api.listen(config.get('ports').storage, err => {
   if (err) {
     return console.log('Error happened while starting the storage service: ', err);
   }
-  console.log('Storage service succesfully started on port', process.env.PORT_STORAGE);
+  console.log('Storage service succesfully started on port', config.get('ports').storage);
 });

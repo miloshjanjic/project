@@ -24,6 +24,14 @@ const recipeSchema = mongoose.Schema({
   recipe: {
     type: String,
     required: ['Resipe is a required field']
+  },
+  starCount: {
+    type: Number,
+    default: 0,
+  },
+  createdAt: {
+    type: Date,
+    default: new Date(),
   }
 });
 

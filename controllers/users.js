@@ -1,16 +1,16 @@
 const User = require("../models/user");
 
 module.exports = {
-  fetchAll: async (req, res) => {
-    // assume try catch
-    const users = await User.find();
+  // fetchAll: async (req, res) => {
+  //   // assume try catch
+  //   const users = await User.find();
 
-    res.status(200).send({
-      error: false,
-      message: 'All users are fetched',
-      users
-    });
-  },
+  //   res.status(200).send({
+  //     error: false,
+  //     message: 'All users are fetched',
+  //     users
+  //   });
+  // },
 
   fetchOne: async (req, res) => {
     // assume try catch
@@ -20,10 +20,10 @@ module.exports = {
       error: false,
       message: `User with id #${req.params.id} fetched`,
       user
-      //recipe
+      
     });
   }
-
+    //recipe
   // orderByAge: async (req, res) => {
   //   const users = await User.find().sort({ age: 1 });
 

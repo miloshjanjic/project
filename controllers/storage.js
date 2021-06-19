@@ -15,10 +15,11 @@ module.exports = {
     res.download(`${storageDirectory}/${req.params.filename}`);
   },
   upload: (req, res) => {
-    const file = req.filles.document;
+    const file = req.files.image;
     const maxFileSize = 5 * 1024 * 1024; //5 mb
     const allowedTypes = [
       'image/jpeg',
+      'image/jpg',
       'image/gif',
       'image/png'
     ];
