@@ -1,4 +1,3 @@
-// require('dotenv').config();
 const mongoose = require('mongoose');
 const config = require('../config/index');
 
@@ -10,9 +9,12 @@ const dbname = config.get('database').dbname;
 
 let DSN = `mongodb+srv://${username}:${password}@${host}/${dbname}?retryWrites=true&w=majority`;
 
+// mongoose.set('useFindAndModify', false); // Deprecation warning-Global level
+
 mongoose.connect(
   DSN,
   {
+    useFindAndModify: false, // Deprecation warning-query level 
     useNewUrlParser: true,
     useUnifiedTopology: true
   }, err => {

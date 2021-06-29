@@ -6,7 +6,7 @@ const recipeSchema = mongoose.Schema({
     required: ['Recipe Title is a required field']
   },
   category: {
-    type: String,
+    type: Array,
     required: ['Category is a required field']
   },
   preparationTime: {
@@ -15,7 +15,7 @@ const recipeSchema = mongoose.Schema({
   },
   noPeople: {
     type: String,
-    required: ['Np. People is a required field']
+    required: ['No. People is a required field']
   },
   shortDescription: {
     type: String,
@@ -32,7 +32,16 @@ const recipeSchema = mongoose.Schema({
   createdAt: {
     type: Date,
     default: new Date(),
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId
+  },
+  imageName: {
+    type: String,
   }
-});
+},
+  { timestamps: true },
+  { collection: "recipes" }
+);
 
 module.exports = mongoose.model('Recipe', recipeSchema);

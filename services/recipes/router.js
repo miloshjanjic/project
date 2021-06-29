@@ -7,6 +7,10 @@ router.get('/', controller.fetchAll)
       .post('/', controller.postRecipe)
       .patch('/:id', controller.updateRecipe)
       .delete('/:id', controller.deleteRecipe)
-      .patch('/:id', controller.likeRecipe);
+      .patch('/like/:id', controller.likeRecipe)
+      .get('/fresh',controller.freshNew)
+      .get('/popular',controller.mostPopular)
+      .get('/breakfast',controller.breakfast)
+      .get('/brunch',controller.brunch);
 
 module.exports = router;

@@ -9,19 +9,19 @@ const cors = require('cors');
 api.use(express.json());
 api.use(cors());
 
-api.use(jwt({
-  secret: config.get('auth').jwt_key,
-  algorithms: ['HS256']
-}));
+// api.use(jwt({
+//   secret: config.get('auth').jwt_key,
+//   algorithms: ['HS256']
+// }));
 
-api.use((err, req, res, next) => {
-  if (err.name === 'UnauthorizedError') {
-    res.status(401).send({
-      error: true,
-      message: 'You need to log in in order to perform this action'
-    });
-  }
-});
+// api.use((err, req, res, next) => {
+//   if (err.name === 'UnauthorizedError') {
+//     res.status(401).send({
+//       error: true,
+//       message: 'You need to log in in order to perform this action'
+//     });
+//   }
+// });
 
 api.use(config.get('path').users , router);
 

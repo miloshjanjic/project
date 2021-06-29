@@ -1,27 +1,27 @@
 require('../../db');
 const express = require('express');
-const api = express();
-const router = require('./router');
 const jwt = require('express-jwt');
-const config = require('../../config/index');
 const cors = require('cors');
+const router = require('./router');
+const config = require('../../config/index');
 
+const api = express();
 api.use(express.json());
 api.use(cors());
 
-api.use(jwt({
-  secret: config.get('auth').jwt_key,
-  algorithms: ['HS256']
-}));
+// api.use(jwt({
+//   secret: config.get('auth').jwt_key,
+//   algorithms: ['HS256']
+// }));
 
-api.use((err, req, res, next) => {
-  if (err.name === 'UnauthorizedError') {
-    res.status(401).send({
-      error: true,
-      message: 'You need to log in in order to perform this action'
-    });
-  }
-});
+// api.use((err, req, res, next) => {
+//   if (err.name === 'UnauthorizedError') {
+//     res.status(401).send({
+//       error: true,
+//       message: 'You need to log in in order to perform this action'
+//     });
+//   }
+// });
 
 api.use(config.get('path').recipes, router);
 
